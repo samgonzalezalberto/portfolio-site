@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    name: Validate (Docker)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Build the deterministic Docker execution environment from the repo Dockerfile.
+      - name: Build Docker image
+        run: docker build . -t portfolio-site:ci
+
+      # Run the CI Pipeline Execution Flow stages sequentially inside the container.
+      - name: Run validation stages (fail-fast)
+        run: |
+          set -euo pipefail
+          docker run --rm \
+            -e CI=true \
+            portfolio-site:ci \
+            sh -lc "npm ci --no-audit --no-fund && npm run typecheck && npm run lint && npm test && npm run test:e2e"
+
+      # Artifact preservation (uploaded even on failure). Patterns are tolerant of missing files.
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-artifacts
+          path: |
+            coverage/**
+            test-results/**
+            playwright-report/**
+            artifacts/**
+          if-no-files-found: ignore
+          retention-days: 7
