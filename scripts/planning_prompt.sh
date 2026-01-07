@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -e
 
 if [ -z "$1" ]; then
   echo "Usage: init_planning_agent_prompt.sh <sprint-number (e.g. 00, 01)>"
