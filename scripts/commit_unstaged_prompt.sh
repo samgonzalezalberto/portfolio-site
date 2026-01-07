@@ -1,82 +1,82 @@
 #!/usr/bin/env bash
+set -e
 
-cat <<'EOF'
-## CODING AGENT PROMPT — FINALIZATION & GIT COMMITS
+SPRINT_NUM="$1"
 
-You are the **coding agent** for the current sprint.
+if [ -z "$SPRINT_NUM" ]; then
+  echo "Usage: $0 <sprint-number>"
+  exit 1
+fi
 
-Implementation has been **approved**.
+cat <<EOF
+## CODING AGENT PROMPT — FINAL GIT COMMITS (SPRINT-${SPRINT_NUM})
 
-Your task now is to **commit all work to git** in a clean, reviewable, and atomic manner.
+You are the **coding agent** for **Sprint-${SPRINT_NUM}**. Sprint implementation has been **approved**.
 
----
-
-## Pre-Commit Review (Mandatory)
-
-Before committing anything, you must:
-
-- Review your **full context history** for this sprint
-- Review your **implementation notes** (`notes.md`)
-- Ensure all implemented changes are intentional, complete, and approved
-- Ensure there are no uncommitted debug artifacts, temporary files, or accidental changes
-
-You are committing **only what was approved**.
+Your task is to commit all work to git using **atomic commits**.
 
 ---
 
-## Commit Strategy (Strict)
+## Preparation
 
-You must use **atomic commits**.
+Before committing:
 
-Each commit must:
-- Represent a single logical change
-- Be independently understandable
-- Avoid mixing unrelated concerns
+1. Review your **full context history** for Sprint-${SPRINT_NUM}.
+2. Re-read:
+   - docs/sprints/sprint-${SPRINT_NUM}/implementation/notes.md
+3. Identify all logical units of change introduced during this sprint:
+   - New features
+   - Refactors
+   - Test additions
+   - Documentation updates
+   - CI / Docker / tooling changes
+   - Chores or cleanup
 
-Do **not** squash unrelated work into a single commit.
+Each logical unit must map to **one atomic commit**.
 
 ---
 
-## Commit Message Conventions (Required)
+## Commit Rules
 
-Use **one-line conventional commit messages**.
+- Use **multiple commits**, not one large commit.
+- Each commit must:
+  - Represent a single coherent change
+  - Build cleanly on its own
+- Do **not** squash commits unless changes are inseparable by design.
 
-Choose the appropriate prefix based on the change type:
+---
 
-- `feat:` — New functionality
-- `fix:` — Bug fixes
-- `refactor:` — Code changes that do not alter behavior
-- `test:` — Adding or modifying tests
-- `docs:` — Documentation-only changes
-- `chore:` — Tooling, CI, config, or maintenance changes
+## Commit Message Format
+
+Use **one-line Conventional Commit–style messages**:
+
+- \`feat: add <clear feature description>\`
+- \`fix: correct <specific issue>\`
+- \`test: add <test scope>\`
+- \`refactor: restructure <component>\`
+- \`docs: update <documentation scope>\`
+- \`chore: <non-functional maintenance>\`
+- \`ci: <ci-related change>\`
+- \`build: <docker/build system change>\`
 
 Examples:
-- `feat: add task execution pipeline`
-- `fix: handle empty DAG edge case`
-- `test: add coverage for cyclic dependency detection`
-- `docs: document task-engine lifecycle`
-- `chore: add CI workflow skeleton`
-
-Keep messages concise and descriptive.
+- \`feat: add deterministic task execution engine\`
+- \`test: add validation for cyclic DAG detection\`
+- \`docs: document sprint-${SPRINT_NUM} architecture decisions\`
+- \`ci: add initial GitHub Actions workflow skeleton\`
+- \`build: add Dockerfile bootstrap for local testing\`
 
 ---
 
-## Execution Requirements
+## Execution Instructions
 
-- Use the git CLI in the terminal
-- Stage files deliberately (avoid blanket `git add .` unless justified)
-- Commit incrementally following the logical order of changes
-- Do not amend or rewrite history unless explicitly required
+- Perform commits **directly in the terminal** using git.
+- Ensure commit order reflects logical dependency.
+- Do not modify code or documentation at this stage.
+- Do not add new files.
+- Only commit what already exists.
 
----
+When all changes are committed, stop.
 
-## Completion Criteria
-
-This task is complete when:
-
-- All approved changes are committed
-- Commit history is clean, atomic, and readable
-- No uncommitted changes remain in the working tree
-
-Proceed.
+Begin.
 EOF
