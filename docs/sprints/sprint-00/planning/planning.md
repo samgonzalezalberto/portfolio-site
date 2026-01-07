@@ -1,37 +1,37 @@
-# Sprint-00 Planning
+## Sprint Goal
 
-## Purpose
+Establish a deterministic, reproducible execution baseline for the portfolio site project through a fully-specified CI pipeline skeleton and Docker execution environment. This sprint creates the foundation for all future development, testing, and deployment activities by defining the exact validation boundaries, execution environment, and enforcement mechanisms that govern project behavior.
 
-Sprint-00 establishes the project's governance baseline: it defines the authoritative rules, structures, and enforcement mechanisms that will govern all subsequent development sprints. Sprint-00 exists solely to create durable planning authority and must not introduce application code or user-visible functionality.
+## Non-Goals
 
-## Relationship to Project Documents
+- Application logic or feature implementation
+- DAG engine implementation or task orchestration
+- Performance optimization or CI workflow caching strategies
+- Production deployment hardening or infrastructure provisioning
+- Test parallelization, matrix strategies, or CI performance tuning
+- Security scanning tools or dependency audit automation beyond specification
+- Docker image optimization or multi-stage build patterns
+- Database setup, migrations, or data persistence
+- Monitoring, logging, or observability implementation
+- Authentication, authorization, or session management
 
-Sprint-00 derives its authority from and is explicitly subordinate to the project-level documents: `docs/project/vision.md`, `docs/project/architecture.md`, and `docs/project/constraints.md`. All Sprint-00 content must be consistent with those documents and must reference them where requirements or constraints are asserted.
+## Invariants
 
-## Why Sprint-00 Must Precede All Other Work
+- Identical inputs to CI produce identical validation outcomes; CI behavior is environment-independent and reproducible
+- The Docker execution environment is the single source of truth for all runtime and build-time dependencies
+- CI must fail fast and deterministically on any validation violation; no silent failures or warnings treated as success
+- All execution assumptions must be explicitly documented; no implicit or undocumented dependencies
+- CI and Docker specifications define enforcement boundaries that future sprints must respect
+- Changes to CI or Docker definitions require explicit architectural revision
+- Local development, CI execution, and agent execution must use identical Docker-defined environments
 
-- Sprint-00 must precede feature and implementation sprints to provide a single source of truth for naming, artifact requirements, approval states, and permitted deviations.
-- Sprint-00 must eliminate ambiguity about acceptance criteria, responsibilities, and required artifacts so that implementation sprints may proceed deterministically.
-- Sprint-00 must define enforcement mechanisms that protect the project from speculative, incompatible, or non-compliant implementations.
+## Definition of Done
 
-## Risks Eliminated for Future Sprints
-
-- Ambiguous artifact requirements: Sprint-00 must remove uncertainty about what documents and artifacts are required for a compliant sprint.
-- Conflicting conventions: Sprint-00 must codify naming and directory conventions to avoid merge conflicts and drift.
-- Unclear approval paths: Sprint-00 must define approval gates and state transitions so that scope and readiness are verifiable.
-- Unbounded deviations: Sprint-00 must define how deviations are requested, recorded, and approved so that changes to governance are auditable.
-
-## Ordering of Deliverables
-
-The deliverables below must be produced, reviewed, and approved in the order shown. Later deliverables may reference and depend on earlier approved artifacts.
-
-1. `planning.md` — Project governance intent and alignment to `docs/project/vision.md`.
-2. `spec.md` — Declarative, normative artifact list, directory and naming rules, and approval gates.
-3. `tdd.md` — Validation criteria and completion/failure definitions derived from the `spec.md` requirements.
-4. `data-dictionary.md` — Canonical definitions for governance terms referenced across Sprint-00 artifacts.
-
-Each deliverable must be completed and approved according to the approval gates defined in `spec.md` before the sprint is declared complete.
-
-## Scope Constraint
-
-Sprint-00 must not define implementation details, tooling choices, CI configurations, or scripts. Sprint-00's outputs are governance documents only and are authoritative for future sprints.
+- CI pipeline skeleton is fully specified with exact stages, jobs, commands, and success/failure criteria
+- Docker execution environment is completely defined with pinned base images, runtime versions, and all dependencies
+- Validation responsibilities are clearly assigned to CI stages with no ambiguity about what each stage enforces
+- Success and failure modes for all CI stages are explicitly documented
+- Docker container behavior is unambiguous for local development, CI, and agent execution contexts
+- All execution assumptions are captured in specification documents with no undocumented environment requirements
+- Rollback procedures are documented as required by enforcement constraints
+- Constraints document is updated if Sprint-00 specifications impose new enforcement rules
