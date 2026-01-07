@@ -10,7 +10,6 @@ SPRINT_NUM="$1"
 BACKLOG_FILE="docs/sprints/sprint-${SPRINT_NUM}/backlog/sprint-${SPRINT_NUM}.md"
 SUMMARY_FILE="docs/sprints/sprint-${SPRINT_NUM}/summary/sprint-${SPRINT_NUM}-summary.md"
 
-# Ensure directories exist
 mkdir -p "docs/sprints/sprint-${SPRINT_NUM}/backlog"
 mkdir -p "docs/sprints/sprint-${SPRINT_NUM}/summary"
 
