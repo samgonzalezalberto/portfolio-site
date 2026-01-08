@@ -64,6 +64,7 @@ This output is **binding governance documentation**.
 ## Output Rules
 
 * Output **only** the four markdown files: planning.md, spec.md, tdd.md, data-dictionary.md
+  * You must follow the exact file template already found in the documents
 * Do not include explanations, commentary, or meta text
 * Treat this as enforceable engineering policy
 

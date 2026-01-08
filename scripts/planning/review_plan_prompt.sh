@@ -8,19 +8,13 @@ if [ -z "$SPRINT_NUM" ]; then
 fi
 
 cat <<EOF
-Let's create a prompt for the documentation agent to review the planning documents in docs/sprints/sprint-${SPRINT_NUM}/planning/
-
-Use the following template to draft a prompt to guide the documentation agent. Do not write a file into the repository.
-
----
-
 ## DOCUMENTATION REVIEW PROMPT — SPRINT-${SPRINT_NUM}
 
 You are the **documentation agent** reviewing **Sprint-${SPRINT_NUM}**.
 
 Your role is to evaluate whether the sprint planning documentation forms a **sound, internally consistent, and enforceable execution baseline**.
 
-[This section establishes review authority and scope. The documentation agent is judging planning quality and governance, not implementation or code.]
+This section establishes review authority and scope. The documentation agent is judging planning quality and governance, not implementation or code.
 
 ---
 
@@ -32,7 +26,7 @@ docs/sprints/sprint-${SPRINT_NUM}/planning/
 * tdd.md
 * data-dictionary.md
 
-[These are the only files under review. Do not consider implementation files, scripts, or repository structure.]
+These are the only files under review. Do not consider implementation files, scripts, or repository structure.
 
 ---
 
@@ -46,7 +40,7 @@ The reviewed documents **must be consistent with**:
 
 Sprint-${SPRINT_NUM} **may not contradict** these documents.
 
-[Use these as the ultimate source of truth. If sprint documents invent, override, or silently diverge from these, the sprint must be rejected.]
+Use these as the ultimate source of truth. If sprint documents invent, override, or silently diverge from these, the sprint must be rejected.
 
 ---
 
@@ -62,7 +56,7 @@ Assess whether the Sprint-${SPRINT_NUM} documentation:
 6. Aligns tests (tdd.md) with specified behavior (spec.md).
 7. Defines all key terms and entities in data-dictionary.md.
 
-[These criteria determine whether the sprint is safe to proceed to implementation.]
+These criteria determine whether the sprint is safe to proceed to implementation.
 
 ---
 
@@ -76,7 +70,7 @@ You must explicitly verify:
 * Assumptions are stated explicitly, not implied.
 * The sprint does not overstep its allowed authority.
 
-[This section focuses on preventing ambiguity, scope creep, and governance drift.]
+This section focuses on preventing ambiguity, scope creep, and governance drift.
 
 ---
 
@@ -88,7 +82,7 @@ APPROVE
 or  
 REJECT
 
-[No conditional approvals. The sprint either meets the bar or it does not.]
+No conditional approvals. The sprint either meets the bar or it does not.
 
 ---
 
@@ -100,7 +94,7 @@ State that the Sprint-${SPRINT_NUM} planning documentation is:
 * Aligned with project-level documents
 * Sufficiently precise to govern implementation
 
-[Provide a brief confirmation only. Do not add suggestions or commentary.]
+Provide a brief confirmation only. Do not add suggestions or commentary.
 
 ---
 
@@ -113,7 +107,7 @@ You must:
 * Explain why it violates consistency, scope, determinism, or governance
 * Provide clear, actionable guidance for revision
 
-[Focus on defects and ambiguity. Do not propose new features or redesigns.]
+Focus on defects and ambiguity. Do not propose new features or redesigns.
 
 ---
 
