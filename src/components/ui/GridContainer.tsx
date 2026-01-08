@@ -1,0 +1,19 @@
+import type { ReactNode } from 'react'
+
+type GridContainerProps = {
+  children: ReactNode
+  as?: 'div' | 'main' | 'section'
+  className?: string
+}
+
+export function GridContainer({
+  children,
+  as: Component = 'div',
+  className,
+}: GridContainerProps) {
+  const classes = ['mx-auto', 'w-full', 'max-w-7xl', 'px-6', className]
+    .filter(Boolean)
+    .join(' ')
+
+  return <Component className={classes}>{children}</Component>
+}
