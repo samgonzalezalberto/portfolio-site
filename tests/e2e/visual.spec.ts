@@ -12,7 +12,7 @@ test('Typography: H1 exists and uses expected utility classes', async ({ page })
 
   const h1 = page.getByRole('heading', { level: 1 })
   await expect(h1).toHaveText('Projects')
-  await expect(h1).toHaveClass(/text-2xl/)
+  await expect(h1).toHaveClass(/text-4xl/)
 })
 
 test.describe('Mobile view', () => {
