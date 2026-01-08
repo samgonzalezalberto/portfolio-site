@@ -15,6 +15,9 @@ build/
 out/
 .next/
 
+# Tailwind CLI output
+build.css
+
 # Coverage / test artifacts
 coverage/
 playwright-report/
