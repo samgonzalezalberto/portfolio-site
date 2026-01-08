@@ -1,31 +1,4 @@
 {
   "root": true,
-  "env": {
-    "es2022": true,
-    "node": true
-  },
-  "ignorePatterns": [
-    "node_modules/",
-    "dist/",
-    "build/",
-    "coverage/"
-  ],
-  "overrides": [
-    {
-      "files": ["**/*.ts"],
-      "parser": "@typescript-eslint/parser",
-      "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-      },
-      "plugins": ["@typescript-eslint"],
-      "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
-      "rules": {}
-    },
-    {
-      "files": ["**/*.js"],
-      "extends": ["eslint:recommended"],
-      "rules": {}
-    }
-  ]
+  "extends": ["next/core-web-vitals"]
 }
