@@ -1,8 +1,38 @@
+import type { Metadata } from 'next'
+
 import { ProjectCard } from '../../components/content/ProjectCard'
 import { Grid } from '../../components/ui/Grid'
 import { Section } from '../../components/ui/Section'
 import { Typography } from '../../components/ui/Typography'
 import { getAllProjects } from '../../lib/mdx'
+
+export const metadata: Metadata = {
+  title: 'Projects',
+  description: 'A curated selection of projects across product and tooling.',
+  alternates: {
+    canonical: '/projects',
+  },
+  openGraph: {
+    title: 'Projects',
+    description: 'A curated selection of projects across product and tooling.',
+    url: '/projects',
+    type: 'website',
+    images: [
+      {
+        url: '/og/default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Portfolio preview',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Projects',
+    description: 'A curated selection of projects across product and tooling.',
+    images: ['/og/default.png'],
+  },
+}
 
 export default async function ProjectsPage() {
   const projects = await getAllProjects()

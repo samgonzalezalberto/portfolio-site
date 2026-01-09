@@ -1,10 +1,40 @@
 import Link from 'next/link'
 
+import type { Metadata } from 'next'
+
 import { ProjectCard } from '../components/content/ProjectCard'
 import { Grid } from '../components/ui/Grid'
 import { Section } from '../components/ui/Section'
 import { Typography } from '../components/ui/Typography'
 import { getAllProjects } from '../lib/mdx'
+
+export const metadata: Metadata = {
+  title: 'Portfolio',
+  description: 'A component-driven portfolio powered by file-based MDX content.',
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Portfolio',
+    description: 'A component-driven portfolio powered by file-based MDX content.',
+    url: '/',
+    type: 'website',
+    images: [
+      {
+        url: '/og/default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Portfolio preview',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Portfolio',
+    description: 'A component-driven portfolio powered by file-based MDX content.',
+    images: ['/og/default.png'],
+  },
+}
 
 export default async function HomePage() {
   const projects = await getAllProjects()

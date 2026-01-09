@@ -1,5 +1,35 @@
+import type { Metadata } from 'next'
+
 import { Section } from '../../components/ui/Section'
 import { Typography } from '../../components/ui/Typography'
+
+export const metadata: Metadata = {
+  title: 'Contact',
+  description: 'How to reach me and where to find my work online.',
+  alternates: {
+    canonical: '/contact',
+  },
+  openGraph: {
+    title: 'Contact',
+    description: 'How to reach me and where to find my work online.',
+    url: '/contact',
+    type: 'website',
+    images: [
+      {
+        url: '/og/default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Portfolio preview',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact',
+    description: 'How to reach me and where to find my work online.',
+    images: ['/og/default.png'],
+  },
+}
 
 export default function ContactPage() {
   return (
@@ -17,12 +47,7 @@ export default function ContactPage() {
             <Typography tone="muted" className="mb-1">
               Email
             </Typography>
-            <a
-              href="mailto:hello@example.com"
-              className="font-sans text-sm text-accent underline focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
-            >
-              hello@example.com
-            </a>
+            <p className="font-sans text-sm text-foreground">hello [at] example.com</p>
           </div>
 
           <div>
@@ -38,7 +63,7 @@ export default function ContactPage() {
                 Website
               </a>
               <a
-                href="https://example.com"
+                href="https://github.com/example"
                 className="font-sans text-sm text-accent underline focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
                 rel="noreferrer"
               >
