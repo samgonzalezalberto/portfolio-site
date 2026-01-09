@@ -5,16 +5,16 @@ test.describe('Accessibility (axe-core)', () => {
   const routes = ['/', '/about', '/projects', '/contact'] as const
 
   for (const route of routes) {
-    test(`A11y: ${route} has no serious/critical violations`, async ({ page }) => {
+    test(`A11y: ${route} has zero violations (mobile viewport)`, async ({ page }) => {
+      await page.setViewportSize({ width: 375, height: 667 })
       await page.goto(route)
+
+      // Include the mobile menu dialog in the scan.
+      await page.getByRole('button', { name: 'Menu' }).click()
 
       const results = await new AxeBuilder({ page }).analyze()
 
-      const seriousOrWorse = results.violations.filter(
-        (v) => v.impact === 'serious' || v.impact === 'critical',
-      )
-
-      expect(seriousOrWorse).toEqual([])
+      expect(results.violations).toEqual([])
     })
   }
 })
