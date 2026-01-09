@@ -1,15 +1,53 @@
 import type { ReactNode } from 'react'
 
+import type { Metadata, Viewport } from 'next'
+
 import './globals.css'
 
 import { Footer } from '../components/layout/Footer'
 import { Header } from '../components/layout/Header'
 import { GridContainer } from '../components/ui/GridContainer'
+import { getSiteUrl } from '../lib/site-url'
 
-export const metadata = {
+const siteUrl = getSiteUrl()
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
+
+export const metadata: Metadata = {
+  metadataBase: siteUrl,
   title: {
     default: 'Portfolio',
     template: '%s | Portfolio',
+  },
+  description: 'A component-driven portfolio powered by file-based MDX content.',
+  manifest: '/manifest.webmanifest',
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
+  },
+  openGraph: {
+    type: 'website',
+    siteName: 'Portfolio',
+    images: [
+      {
+        url: '/og/default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Portfolio preview',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/og/default.png'],
   },
 }
 
