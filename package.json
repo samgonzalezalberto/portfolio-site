@@ -17,7 +17,7 @@
     "tailwind:build": "tailwindcss -i ./src/app/globals.css -o ./build.css",
     "test": "npm run test:e2e",
     "test:e2e": "npm run build && playwright test",
-    "test:unit": "tsx --tsconfig tsconfig.test.json --test tests/unit/*.test.*",
+    "test:unit": "tsx --tsconfig tsconfig.test.json --test tests/unit/*.test.* src/components/ui/__tests__/*.test.*",
     "lighthouse:mobile": "lhci autorun --config=.lighthouserc.mobile.json",
     "lighthouse:desktop": "lhci autorun --config=.lighthouserc.desktop.json",
     "lighthouse:ci": "npm run lighthouse:mobile && npm run lighthouse:desktop",
