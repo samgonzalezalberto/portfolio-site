@@ -18,6 +18,9 @@
     "test": "npm run test:e2e",
     "test:e2e": "npm run build && playwright test",
     "test:unit": "tsx --tsconfig tsconfig.test.json --test tests/unit/*.test.*",
+    "lighthouse:mobile": "lhci autorun --config=.lighthouserc.mobile.json",
+    "lighthouse:desktop": "lhci autorun --config=.lighthouserc.desktop.json",
+    "lighthouse:ci": "npm run lighthouse:mobile && npm run lighthouse:desktop",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
@@ -28,6 +31,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "4.10.2",
+    "@lhci/cli": "^0.13.0",
     "@playwright/test": "1.57.0",
     "@types/node": "25.0.3",
     "@types/react": "18.3.18",
