@@ -11,7 +11,7 @@ export function Container({
   as: Component = 'div',
   className,
 }: ContainerProps) {
-  const classes = ['mx-auto', 'w-full', 'max-w-screen-xl', 'px-6', className]
+  const classes = ['mx-auto', 'w-full', 'max-w-screen-xl', 'px-gutter', className]
     .filter(Boolean)
     .join(' ')
 

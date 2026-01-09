@@ -30,7 +30,9 @@ export function Grid({
   cols = 12,
   className,
 }: GridProps) {
-  const classes = ['grid', COLS_CLASS[cols], className].filter(Boolean).join(' ')
+  const classes = ['grid', COLS_CLASS[cols], 'gap-gutter', className]
+    .filter(Boolean)
+    .join(' ')
 
   return <Component className={classes}>{children}</Component>
 }

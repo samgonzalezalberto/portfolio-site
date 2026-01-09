@@ -15,8 +15,8 @@ type TypographyProps = {
 }
 
 const BODY_CLASSES_BY_TAG: Record<TypographyTag, string> = {
-  h1: 'font-sans text-4xl tracking-tight',
-  h2: 'font-sans text-3xl tracking-tight',
+  h1: 'font-sans text-4xl tracking-tighter',
+  h2: 'font-sans text-3xl tracking-tighter',
   h3: 'font-sans text-2xl tracking-tight',
   h4: 'font-sans text-xl tracking-tight',
   h5: 'font-sans text-lg tracking-tight',

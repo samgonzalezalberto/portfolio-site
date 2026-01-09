@@ -11,7 +11,7 @@ export function GridContainer({
   as: Component = 'div',
   className,
 }: GridContainerProps) {
-  const classes = ['mx-auto', 'w-full', 'max-w-7xl', 'px-6', className]
+  const classes = ['mx-auto', 'w-full', 'max-w-7xl', 'px-gutter', className]
     .filter(Boolean)
     .join(' ')
 
