@@ -2,7 +2,7 @@ import { GridContainer } from '../ui/GridContainer'
 
 export function Footer() {
   return (
-    <footer>
+    <footer className="md:fixed md:bottom-0 md:left-0 md:right-0 z-40 bg-canvas">
       <GridContainer className="py-8">
         <div className="grid grid-cols-swiss items-center gap-y-4">
           <p className="col-span-12 font-sans text-xs text-muted">© Samuel Gonzalez Alberto</p>

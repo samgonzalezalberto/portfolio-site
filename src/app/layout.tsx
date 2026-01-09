@@ -62,7 +62,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           Skip to Content
         </a>
         <Header />
-        <GridContainer as="main" className="py-10">
+        <GridContainer as="main" className="pt-24 pb-32">
           <div id="page-root" tabIndex={-1} className="grid grid-cols-swiss">
             {children}
           </div>

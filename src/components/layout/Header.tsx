@@ -35,7 +35,7 @@ export function Header({ pathname: pathnameOverride, initialIsOpen }: HeaderProp
   }
 
   return (
-    <header>
+    <header className="fixed left-0 right-0 top-0 z-40 bg-canvas">
       <GridContainer className="py-gutter">
         <nav aria-label="Primary" className="grid grid-cols-swiss items-center">
           <NavLink href="/" exact pathname={pathname} className="col-span-6">
