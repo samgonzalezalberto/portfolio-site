@@ -53,7 +53,7 @@ export default async function AboutPage() {
 
         <div className="mt-6 flex flex-wrap gap-4">
           <a
-            href="https://github.com/example"
+            href="https://github.com/samgonzalezalberto"
             className="font-sans text-xs text-accent underline focus-ring interactive-transition"
             rel="noreferrer"
           >

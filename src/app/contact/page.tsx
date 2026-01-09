@@ -47,7 +47,7 @@ export default function ContactPage() {
             <Typography tone="muted" className="mb-1">
               Email
             </Typography>
-            <p className="font-sans text-xs text-foreground">hello [at] example.com</p>
+            <p className="font-sans text-xs text-foreground">samgonzalezalberto@gmail.com</p>
           </div>
 
           <div>
@@ -63,7 +63,7 @@ export default function ContactPage() {
                 Website
               </a>
               <a
-                href="https://github.com/example"
+                href="https://github.com/samgonzalezalberto"
                 className="font-sans text-xs text-accent underline focus-ring interactive-transition"
                 rel="noreferrer"
               >

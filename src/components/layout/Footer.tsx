@@ -5,17 +5,17 @@ export function Footer() {
     <footer>
       <GridContainer className="py-8">
         <div className="grid grid-cols-swiss items-center gap-y-4">
-          <p className="col-span-12 font-sans text-xs text-muted">©</p>
+          <p className="col-span-12 font-sans text-xs text-muted">© Samuel Gonzalez Alberto</p>
           <div className="col-span-12 flex gap-gutter">
             <a
-              href="https://example.com"
+              href="https://github.com/samgonzalezalberto"
               className="font-sans text-xs text-foreground hover:text-accent underline focus-ring interactive-transition"
               rel="noreferrer"
             >
               GitHub
             </a>
             <a
-              href="https://example.com"
+              href="https://www.linkedin.com/in/samgonzalezalberto"
               className="font-sans text-xs text-foreground hover:text-accent underline focus-ring interactive-transition"
               rel="noreferrer"
             >
