@@ -3,9 +3,9 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 import { ProjectCard } from '../components/content/ProjectCard'
-import { Grid } from '../components/ui/Grid'
+import { Grid, GridItem } from '../components/ui/Grid'
 import { Section } from '../components/ui/Section'
-import { Typography } from '../components/ui/Typography'
+import { TypographicBody, TypographicHero, Typography } from '../components/ui/Typography'
 import { getAllProjects } from '../lib/mdx'
 
 export const metadata: Metadata = {
@@ -42,22 +42,30 @@ export default async function HomePage() {
 
   return (
     <>
-      <Section className="col-span-12">
-        <Typography as="h1" className="mb-4">
-          Portfolio
-        </Typography>
-        <Typography tone="muted" className="max-w-prose">
-          A component-driven portfolio powered by file-based MDX content.
-        </Typography>
-        <div className="mt-6">
-          <Link
-            href="/projects"
-            className="font-sans text-xs text-accent underline focus-ring interactive-transition"
-          >
-            See all projects
-          </Link>
-        </div>
-      </Section>
+      <Grid cols={12} className="col-span-12">
+        <GridItem span={{ base: 12, md: 5 }}>
+          <Section>
+            <TypographicHero as="h1" className="mb-6">
+              Portfolio
+            </TypographicHero>
+            <TypographicBody tone="muted" className="max-w-[65ch]">
+              A component-driven portfolio powered by file-based MDX content.
+            </TypographicBody>
+            <div className="mt-6">
+              <Link
+                href="/projects"
+                className="font-sans text-xs text-accent underline focus-ring interactive-transition"
+              >
+                See all projects
+              </Link>
+            </div>
+          </Section>
+        </GridItem>
+
+        <GridItem span={{ md: 7 }} className="hidden md:block">
+          {null}
+        </GridItem>
+      </Grid>
 
       <Section className="col-span-12">
         <Typography as="h2" className="mb-6">
