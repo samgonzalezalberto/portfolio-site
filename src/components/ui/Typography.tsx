@@ -52,3 +52,72 @@ export function Typography({
 
   return <Component className={classes}>{children}</Component>
 }
+
+type TypographicProps = {
+  children: ReactNode
+  as?: TypographyTag
+  tone?: TypographyTone
+  className?: string
+}
+
+const TYPOGRAPHIC_TONE_CLASS: Record<TypographyTone, string> = {
+  foreground: 'text-foreground',
+  muted: 'text-muted',
+  accent: 'text-accent',
+}
+
+export function TypographicHero({
+  children,
+  as: Component = 'h1',
+  tone = 'foreground',
+  className,
+}: TypographicProps) {
+  const classes = [
+    'font-sans',
+    'tracking-tighter',
+    'leading-none',
+    'break-words',
+    'text-[clamp(4rem,10vw,6rem)]',
+    'md:text-[clamp(6rem,8vw,7rem)]',
+    TYPOGRAPHIC_TONE_CLASS[tone],
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ')
+
+  return <Component className={classes}>{children}</Component>
+}
+
+export function TypographicHeading({
+  children,
+  as: Component = 'h2',
+  tone = 'foreground',
+  className,
+}: TypographicProps) {
+  const classes = [
+    'font-sans',
+    'tracking-tighter',
+    'leading-none',
+    'text-[clamp(4rem,8vw,5rem)]',
+    'md:text-[clamp(6rem,6vw,6rem)]',
+    TYPOGRAPHIC_TONE_CLASS[tone],
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ')
+
+  return <Component className={classes}>{children}</Component>
+}
+
+export function TypographicBody({
+  children,
+  as: Component = 'p',
+  tone = 'foreground',
+  className,
+}: TypographicProps) {
+  const classes = ['font-sans', 'text-base', TYPOGRAPHIC_TONE_CLASS[tone], className]
+    .filter(Boolean)
+    .join(' ')
+
+  return <Component className={classes}>{children}</Component>
+}
