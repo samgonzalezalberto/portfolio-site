@@ -26,6 +26,7 @@ test-results/
 # Caches
 .cache/
 .eslintcache
+.lighthouseci/
 .turbo/
 .parcel-cache/
 .tmp/
