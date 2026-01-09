@@ -36,14 +36,14 @@ export function Header({ pathname: pathnameOverride, initialIsOpen }: HeaderProp
 
   return (
     <header>
-      <GridContainer className="py-6">
+      <GridContainer className="py-gutter">
         <nav aria-label="Primary" className="grid grid-cols-swiss items-center">
           <NavLink href="/" exact pathname={pathname} className="col-span-6">
             Portfolio
           </NavLink>
 
-          <div className="col-span-6 flex justify-end gap-6">
-            <div className="hidden md:flex justify-end gap-6">
+          <div className="col-span-6 flex justify-end gap-gutter">
+            <div className="hidden md:flex justify-end gap-gutter">
               {NAV_ITEMS.map((item) => (
                 <NavLink key={item.href} href={item.href} pathname={pathname}>
                   {item.label}

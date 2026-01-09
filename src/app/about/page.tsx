@@ -54,7 +54,7 @@ export default async function AboutPage() {
         <div className="mt-6 flex flex-wrap gap-4">
           <a
             href="https://github.com/example"
-            className="font-sans text-sm text-accent underline focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+            className="font-sans text-xs text-accent underline focus-ring interactive-transition"
             rel="noreferrer"
           >
             GitHub
@@ -62,7 +62,7 @@ export default async function AboutPage() {
           <a
             href="/resume.pdf"
             download
-            className="font-sans text-sm text-accent underline focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+            className="font-sans text-xs text-accent underline focus-ring interactive-transition"
           >
             Resume (PDF)
           </a>
@@ -73,7 +73,7 @@ export default async function AboutPage() {
         <Typography as="h2" className="mb-6">
           Experience
         </Typography>
-        <Grid cols={12} className="gap-6">
+        <Grid cols={12}>
           {experiences.map((exp) => (
             <div key={exp.slug} className="col-span-12">
               <ExperienceItem

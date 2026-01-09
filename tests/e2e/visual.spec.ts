@@ -21,6 +21,20 @@ test.describe('Mobile view', () => {
   test('Shell snapshot: Home (mobile)', async ({ page }) => {
     await page.goto('/')
 
+    const hasNoHorizontalScroll = await page.evaluate(() => {
+      const root = document.documentElement
+      return root.scrollWidth <= window.innerWidth
+    })
+    expect(hasNoHorizontalScroll).toBe(true)
+
+    const h1FitsViewport = await page.evaluate(() => {
+      const h1 = document.querySelector('h1')
+      if (!h1) return true
+      const rect = h1.getBoundingClientRect()
+      return rect.width <= window.innerWidth
+    })
+    expect(h1FitsViewport).toBe(true)
+
     const html = await page.locator('#page-root').innerHTML()
     expect(html).toMatchSnapshot('home.mobile.html')
   })

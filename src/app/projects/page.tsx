@@ -52,7 +52,7 @@ export default async function ProjectsPage() {
         <Typography as="h2" className="sr-only">
           Project list
         </Typography>
-        <Grid cols={12} className="gap-6" aria-label="Projects grid">
+        <Grid cols={12} aria-label="Projects grid">
           {projects.map((project) => (
             <div key={project.slug} className="col-span-12 md:col-span-6">
               <ProjectCard

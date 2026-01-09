@@ -107,7 +107,7 @@ export function MobileMenu({ isOpen, menuId = 'mobile-menu', onClose, children }
       <div
         ref={containerRef}
         tabIndex={-1}
-        className="h-full w-full px-6 py-6"
+        className="h-full w-full px-gutter py-gutter"
       >
         <div className="flex items-center justify-between">
           <div className="font-sans text-base text-foreground">Menu</div>
@@ -120,7 +120,7 @@ export function MobileMenu({ isOpen, menuId = 'mobile-menu', onClose, children }
           </button>
         </div>
 
-        <nav aria-label="Mobile" className="mt-10 flex flex-col gap-6">
+        <nav aria-label="Mobile" className="mt-10 flex flex-col gap-gutter">
           {children}
         </nav>
       </div>

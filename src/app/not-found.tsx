@@ -22,7 +22,7 @@ export default function NotFound() {
         The page you’re looking for doesn’t exist.
       </Typography>
       <div className="mt-6">
-        <Link href="/" className="font-sans text-sm text-accent underline">
+        <Link href="/" className="font-sans text-xs text-accent underline focus-ring interactive-transition">
           Go back home
         </Link>
       </div>

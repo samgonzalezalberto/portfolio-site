@@ -47,7 +47,7 @@ export default function ContactPage() {
             <Typography tone="muted" className="mb-1">
               Email
             </Typography>
-            <p className="font-sans text-sm text-foreground">hello [at] example.com</p>
+            <p className="font-sans text-xs text-foreground">hello [at] example.com</p>
           </div>
 
           <div>
@@ -57,14 +57,14 @@ export default function ContactPage() {
             <div className="flex gap-4">
               <a
                 href="https://example.com"
-                className="font-sans text-sm text-accent underline focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+                className="font-sans text-xs text-accent underline focus-ring interactive-transition"
                 rel="noreferrer"
               >
                 Website
               </a>
               <a
                 href="https://github.com/example"
-                className="font-sans text-sm text-accent underline focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+                className="font-sans text-xs text-accent underline focus-ring interactive-transition"
                 rel="noreferrer"
               >
                 GitHub

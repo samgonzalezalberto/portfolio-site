@@ -54,7 +54,7 @@ export function ProjectCard({
           {repoUrl ? (
             <a
               href={repoUrl}
-              className="font-sans text-sm text-accent underline"
+              className="font-sans text-xs text-accent underline focus-ring interactive-transition"
               rel="noreferrer"
             >
               Code
@@ -63,7 +63,7 @@ export function ProjectCard({
           {liveUrl ? (
             <a
               href={liveUrl}
-              className="font-sans text-sm text-accent underline"
+              className="font-sans text-xs text-accent underline focus-ring interactive-transition"
               rel="noreferrer"
             >
               Demo

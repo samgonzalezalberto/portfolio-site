@@ -52,7 +52,7 @@ export default async function HomePage() {
         <div className="mt-6">
           <Link
             href="/projects"
-            className="font-sans text-sm text-accent underline"
+            className="font-sans text-xs text-accent underline focus-ring interactive-transition"
           >
             See all projects
           </Link>
@@ -63,7 +63,7 @@ export default async function HomePage() {
         <Typography as="h2" className="mb-6">
           Featured
         </Typography>
-        <Grid cols={12} className="gap-6">
+        <Grid cols={12}>
           {featured.map((project) => (
             <div key={project.slug} className="col-span-12 md:col-span-6">
               <ProjectCard

@@ -99,7 +99,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           Details
         </Typography>
 
-        <Grid cols={12} className="gap-6">
+        <Grid cols={12}>
           <div className="col-span-12">
             {project.technologies.length > 0 ? (
               <div>
@@ -124,7 +124,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 {project.repoUrl ? (
                   <a
                     href={project.repoUrl}
-                    className="font-sans text-sm text-accent underline"
+                    className="font-sans text-xs text-accent underline focus-ring interactive-transition"
                     rel="noreferrer"
                   >
                     Code
@@ -133,7 +133,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 {project.liveUrl ? (
                   <a
                     href={project.liveUrl}
-                    className="font-sans text-sm text-accent underline"
+                    className="font-sans text-xs text-accent underline focus-ring interactive-transition"
                     rel="noreferrer"
                   >
                     Demo
