@@ -1,9 +1,11 @@
- 'use client'
+'use client'
 
-import Link from 'next/link'
+import { useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 
 import { GridContainer } from '../ui/GridContainer'
+import { NavLink } from '../ui/NavLink'
+import { MobileMenu } from './MobileMenu'
 
 type NavItem = {
   href: string
@@ -16,48 +18,66 @@ const NAV_ITEMS: NavItem[] = [
   { href: '/contact', label: 'Contact' },
 ]
 
-function navLinkClass(isActive: boolean) {
-  return [
-    'font-sans text-base',
-    'text-foreground hover:text-accent',
-    'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas',
-    isActive ? 'text-accent underline' : undefined,
-  ]
-    .filter(Boolean)
-    .join(' ')
+type HeaderProps = {
+  pathname?: string
+  initialIsOpen?: boolean
 }
 
-export function Header() {
-  const pathname = usePathname()
+export function Header({ pathname: pathnameOverride, initialIsOpen }: HeaderProps = {}) {
+  const pathnameFromHook = usePathname()
+  const pathname = pathnameOverride ?? pathnameFromHook
+  const [isOpen, setIsOpen] = useState(initialIsOpen ?? false)
+  const triggerRef = useRef<HTMLButtonElement | null>(null)
+
+  function closeMenu() {
+    setIsOpen(false)
+    triggerRef.current?.focus()
+  }
 
   return (
     <header>
       <GridContainer className="py-6">
         <nav aria-label="Primary" className="grid grid-cols-swiss items-center">
-          <Link href="/" className={['col-span-6', navLinkClass(pathname === '/')].join(' ')}>
+          <NavLink href="/" exact pathname={pathname} className="col-span-6">
             Portfolio
-          </Link>
-          <div className="col-span-6 flex justify-end gap-6">
-            {NAV_ITEMS.map((item) => {
-              const isActive =
-                item.href === '/'
-                  ? pathname === '/'
-                  : pathname === item.href || pathname.startsWith(`${item.href}/`)
+          </NavLink>
 
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={navLinkClass(isActive)}
-                  aria-current={isActive ? 'page' : undefined}
-                >
+          <div className="col-span-6 flex justify-end gap-6">
+            <div className="hidden md:flex justify-end gap-6">
+              {NAV_ITEMS.map((item) => (
+                <NavLink key={item.href} href={item.href} pathname={pathname}>
                   {item.label}
-                </Link>
-              )
-            })}
+                </NavLink>
+              ))}
+            </div>
+
+            <button
+              ref={triggerRef}
+              type="button"
+              className="focus-ring interactive-transition md:hidden rounded-md px-2 py-1 text-foreground hover:text-accent"
+              aria-controls="mobile-menu"
+              aria-expanded={isOpen}
+              onClick={() => setIsOpen((v) => !v)}
+            >
+              Menu
+            </button>
           </div>
         </nav>
       </GridContainer>
+
+      <MobileMenu isOpen={isOpen} menuId="mobile-menu" onClose={closeMenu}>
+        {NAV_ITEMS.map((item) => (
+          <NavLink
+            key={item.href}
+            href={item.href}
+            pathname={pathname}
+            className="text-lg"
+            onClick={closeMenu}
+          >
+            {item.label}
+          </NavLink>
+        ))}
+      </MobileMenu>
     </header>
   )
 }
