@@ -22,8 +22,6 @@ This is a prompt-authoring task.
 
 You must generate a **complete documentation-agent prompt** that instructs the documentation agent to create a **phased implementation plan** (multiple coding-agent prompts).
 
-The documentation agent must also copy the following files `docs/sprints/sprint-${SPRINT_NUM}/planning/{tdd.md,spec.md,data-dictionary.md}` into the implementation task-engine folder for the coding agent to use as authoritative inputs.
-
 You are not designing phases yet.
 You are designing the **instructions that will cause those phases to be designed correctly**.
 
@@ -126,7 +124,7 @@ Completion Criteria
 
 ### Output Rules
 
-- Output only the phased coding-agent prompts into a `docs/sprints/sprint-${SPRINT_NUM}/implementation/sequence.md` file
+- Output only the phased coding-agent prompts into the `docs/sprints/sprint-${SPRINT_NUM}/implementation/sequence.md` file
 - Do not include commentary or explanations
 - Treat the output as binding execution instructions
 

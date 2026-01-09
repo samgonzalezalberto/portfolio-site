@@ -23,8 +23,10 @@ mkdir -p \
 touch \
   "${SPRINT_DIR}/backlog/sprint-${SPRINT_NUM}.md" \
   "${SPRINT_DIR}/implementation/notes.md" \
+  "${SPRINT_DIR}/implementation/sequence.md" \
   "${SPRINT_DIR}/implementation/task-engine/spec.md" \
   "${SPRINT_DIR}/implementation/task-engine/tdd.md" \
+  "${SPRINT_DIR}/implementation/task-engine/data-dictionary.md" \
   "${SPRINT_DIR}/planning/planning.md" \
   "${SPRINT_DIR}/planning/spec.md" \
   "${SPRINT_DIR}/planning/tdd.md" \
