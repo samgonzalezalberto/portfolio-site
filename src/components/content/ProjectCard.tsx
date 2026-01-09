@@ -21,6 +21,8 @@ export function ProjectCard({
   const classes = [
     'rounded-lg border border-muted p-6',
     'bg-canvas text-foreground',
+    'interactive-transition',
+    'hover:border-accent hover:shadow-md',
     className,
   ]
     .filter(Boolean)
