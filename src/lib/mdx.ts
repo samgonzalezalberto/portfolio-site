@@ -9,15 +9,15 @@ type ProjectFrontmatter = {
   repoUrl?: unknown
   liveUrl?: unknown
   featured: unknown
-  date: unknown
+  date?: unknown
 }
 
 type ExperienceFrontmatter = {
   company: unknown
   role: unknown
   startDate: unknown
-  endDate: unknown
-  location: unknown
+  endDate?: unknown
+  location?: unknown
 }
 
 export type Project = {
@@ -27,7 +27,7 @@ export type Project = {
   repoUrl?: string
   liveUrl?: string
   featured: boolean
-  date: string
+  date?: string
   slug: string
 }
 
@@ -35,8 +35,8 @@ export type Experience = {
   company: string
   role: string
   startDate: string
-  endDate: string
-  location: string
+  endDate?: string
+  location?: string
   description: string
   slug: string
 }
@@ -98,13 +98,17 @@ export async function getAllProjects(): Promise<Project[]> {
         repoUrl: optionalString(frontmatter.repoUrl),
         liveUrl: optionalString(frontmatter.liveUrl),
         featured: assertBoolean(frontmatter.featured, 'Project.featured'),
-        date: assertString(frontmatter.date, 'Project.date'),
+        date: optionalString(frontmatter.date),
         slug: slugFromFilename(filename),
       } satisfies Project
     }),
   )
 
-  return projects.sort((a, b) => b.date.localeCompare(a.date))
+  return projects.sort((a, b) => {
+    const dateA = a.date ?? ''
+    const dateB = b.date ?? ''
+    return dateB.localeCompare(dateA)
+  })
 }
 
 export async function getAllExperiences(): Promise<Experience[]> {
@@ -122,8 +126,8 @@ export async function getAllExperiences(): Promise<Experience[]> {
         company: assertString(frontmatter.company, 'Experience.company'),
         role: assertString(frontmatter.role, 'Experience.role'),
         startDate: assertString(frontmatter.startDate, 'Experience.startDate'),
-        endDate: assertString(frontmatter.endDate, 'Experience.endDate'),
-        location: assertString(frontmatter.location, 'Experience.location'),
+        endDate: optionalString(frontmatter.endDate),
+        location: optionalString(frontmatter.location),
         description: content.trim(),
         slug: slugFromFilename(filename),
       } satisfies Experience
