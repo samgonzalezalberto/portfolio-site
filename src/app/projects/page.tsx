@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 
-import { ProjectCard } from '../../components/content/ProjectCard'
-import { Grid } from '../../components/ui/Grid'
+import { IndexList } from '../../components/ui/IndexList'
+import { Grid, GridItem } from '../../components/ui/Grid'
 import { Section } from '../../components/ui/Section'
-import { Typography } from '../../components/ui/Typography'
+import { TypographicBody, TypographicHeading, Typography } from '../../components/ui/Typography'
 import { getAllProjects } from '../../lib/mdx'
 
 export const metadata: Metadata = {
@@ -38,34 +38,85 @@ export default async function ProjectsPage() {
   const projects = await getAllProjects()
 
   return (
-    <>
-      <Section className="col-span-12">
-        <Typography as="h1" className="mb-4">
-          Projects
-        </Typography>
-        <Typography tone="muted" className="max-w-prose">
-          Selected work across product, tooling, and design systems.
-        </Typography>
-      </Section>
+    <Grid cols={12} className="col-span-12">
+      <GridItem span={{ base: 12, md: 5 }}>
+        <Section>
+          <TypographicHeading as="h1" className="mb-6">
+            Projects
+          </TypographicHeading>
+          <TypographicBody tone="muted" className="max-w-[65ch]">
+            Selected work across product, tooling, and design systems.
+          </TypographicBody>
+        </Section>
 
-      <Section className="col-span-12">
-        <Typography as="h2" className="sr-only">
-          Project list
-        </Typography>
-        <Grid cols={12} aria-label="Projects grid">
-          {projects.map((project) => (
-            <div key={project.slug} className="col-span-12 md:col-span-6">
-              <ProjectCard
-                title={project.title}
-                description={project.description}
-                technologies={project.technologies}
-                repoUrl={project.repoUrl}
-                liveUrl={project.liveUrl}
-              />
-            </div>
-          ))}
-        </Grid>
-      </Section>
-    </>
+        <Section>
+          <Typography as="h2" className="sr-only">
+            Project list
+          </Typography>
+
+          <IndexList aria-label="Projects">
+            {projects.map((project) => (
+              <IndexList.Item
+                key={project.slug}
+                meta={
+                  project.date ? (
+                    <Typography as="p" variant="mono" tone="muted" className="text-xs">
+                      {project.date}
+                    </Typography>
+                  ) : null
+                }
+              >
+                <Typography as="h3" className="mb-2 break-words text-3xl tracking-tighter md:text-4xl">
+                  {project.title}
+                </Typography>
+                <Typography tone="muted" className="mb-4 max-w-[65ch]">
+                  {project.description}
+                </Typography>
+
+                {project.technologies.length > 0 ? (
+                  <ul className="mb-4 flex flex-wrap gap-2" aria-label="Technologies">
+                    {project.technologies.map((tech) => (
+                      <li
+                        key={tech}
+                        className="inline-flex items-center rounded-full border border-muted px-2 py-1 font-mono text-xs text-muted"
+                      >
+                        {tech}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+
+                {(project.repoUrl || project.liveUrl) && (
+                  <div className="flex gap-4">
+                    {project.repoUrl ? (
+                      <a
+                        href={project.repoUrl}
+                        className="font-sans text-xs text-accent underline focus-ring interactive-transition"
+                        rel="noreferrer"
+                      >
+                        Code
+                      </a>
+                    ) : null}
+                    {project.liveUrl ? (
+                      <a
+                        href={project.liveUrl}
+                        className="font-sans text-xs text-accent underline focus-ring interactive-transition"
+                        rel="noreferrer"
+                      >
+                        Demo
+                      </a>
+                    ) : null}
+                  </div>
+                )}
+              </IndexList.Item>
+            ))}
+          </IndexList>
+        </Section>
+      </GridItem>
+
+      <GridItem span={{ md: 7 }} className="hidden md:block">
+        {null}
+      </GridItem>
+    </Grid>
   )
 }
