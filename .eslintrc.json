@@ -1,4 +1,6 @@
 {
   "root": true,
+  "noInlineConfig": true,
+  "reportUnusedDisableDirectives": true,
   "extends": ["next/core-web-vitals"]
 }
