@@ -12,7 +12,7 @@ test('Typography: H1 exists and uses expected utility classes', async ({ page })
 
   const h1 = page.getByRole('heading', { level: 1 })
   await expect(h1).toHaveText('Projects')
-  await expect(h1).toHaveClass(/text-4xl/)
+  await expect(h1).toHaveClass(/text-\[clamp\(4rem,8vw,5rem\)\]/)
 })
 
 test.describe('Mobile view', () => {
@@ -38,6 +38,46 @@ test.describe('Mobile view', () => {
     const html = await page.locator('#page-root').innerHTML()
     expect(html).toMatchSnapshot('home.mobile.html')
   })
+
+  test('No horizontal scroll: About (mobile)', async ({ page }) => {
+    await page.goto('/about')
+
+    const hasNoHorizontalScroll = await page.evaluate(() => {
+      const root = document.documentElement
+      return root.scrollWidth <= window.innerWidth
+    })
+    expect(hasNoHorizontalScroll).toBe(true)
+  })
+
+  test('No horizontal scroll: Projects (mobile)', async ({ page }) => {
+    await page.goto('/projects')
+
+    const hasNoHorizontalScroll = await page.evaluate(() => {
+      const root = document.documentElement
+      return root.scrollWidth <= window.innerWidth
+    })
+    expect(hasNoHorizontalScroll).toBe(true)
+  })
+
+  test('No horizontal scroll: Contact (mobile)', async ({ page }) => {
+    await page.goto('/contact')
+
+    const hasNoHorizontalScroll = await page.evaluate(() => {
+      const root = document.documentElement
+      return root.scrollWidth <= window.innerWidth
+    })
+    expect(hasNoHorizontalScroll).toBe(true)
+  })
+
+  test('No horizontal scroll: Project detail (mobile)', async ({ page }) => {
+    await page.goto('/projects/portfolio-site')
+
+    const hasNoHorizontalScroll = await page.evaluate(() => {
+      const root = document.documentElement
+      return root.scrollWidth <= window.innerWidth
+    })
+    expect(hasNoHorizontalScroll).toBe(true)
+  })
 })
 
 test('Shell snapshot: About', async ({ page }) => {
@@ -59,4 +99,18 @@ test('Shell snapshot: Contact', async ({ page }) => {
 
   const html = await page.locator('#page-root').innerHTML()
   expect(html).toMatchSnapshot('contact.html')
+})
+
+test('Shell snapshot: Project detail', async ({ page }) => {
+  await page.goto('/projects/portfolio-site')
+
+  const html = await page.locator('#page-root').innerHTML()
+  expect(html).toMatchSnapshot('project-detail.html')
+})
+
+test('Shell snapshot: Long title project detail', async ({ page }) => {
+  await page.goto('/projects/edge-long-title')
+
+  const html = await page.locator('#page-root').innerHTML()
+  expect(html).toMatchSnapshot('project-detail.long-title.html')
 })
